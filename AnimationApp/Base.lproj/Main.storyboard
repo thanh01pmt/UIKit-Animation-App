@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,46 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AnimationApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKz-ae-e5p" userLabel="btnClick">
+                                <rect key="frame" x="177.66666666666666" y="629" width="75" height="39"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="changeToNextImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1A-cs-rl6"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eraser.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rO6-Zu-BXx" userLabel="imgGoodnight">
+                                <rect key="frame" x="0.0" y="159.66666666666666" width="430" height="428.66666666666674"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rO6-Zu-BXx" secondAttribute="height" multiplier="1:1" id="aoU-4p-sxE"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.1411764771" green="0.1686274707" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="rO6-Zu-BXx" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="64Y-LJ-b4o"/>
+                            <constraint firstItem="rO6-Zu-BXx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NdZ-P0-rah"/>
+                            <constraint firstItem="HKz-ae-e5p" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Zdw-kr-KTJ"/>
+                            <constraint firstItem="rO6-Zu-BXx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="dqj-X2-B1Q"/>
+                            <constraint firstItem="HKz-ae-e5p" firstAttribute="top" secondItem="rO6-Zu-BXx" secondAttribute="bottom" constant="40" id="i6d-qh-9Km"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imgGoodnight" destination="rO6-Zu-BXx" id="kQ9-oa-tLN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.242990654205606" y="3.2397408207343417"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eraser.fill" catalog="system" width="128" height="119"/>
+    </resources>
 </document>
