@@ -21,7 +21,7 @@
                                     <constraint firstAttribute="width" secondItem="rO6-Zu-BXx" secondAttribute="height" multiplier="1:1" id="aoU-4p-sxE"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hOE-qx-KMS">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hOE-qx-KMS" userLabel="stackButtons">
                                 <rect key="frame" x="11" y="629" width="408" height="38"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcj-0k-ILB" userLabel="btnToggleAnimation">
@@ -55,15 +55,34 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="SUa-N8-L6F" userLabel="stackSwitch">
+                                <rect key="frame" x="133" y="708" width="164" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jeh-BU-njW" userLabel="lblSound">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cBm-J9-mlg" userLabel="switchSound">
+                                        <rect key="frame" x="115" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="toggleSound:" destination="BYZ-38-t0r" eventType="valueChanged" id="AO5-ez-8Xl"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.1411764771" green="0.1686274707" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="hOE-qx-KMS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="45v-DE-fWU"/>
+                            <constraint firstItem="SUa-N8-L6F" firstAttribute="top" secondItem="hOE-qx-KMS" secondAttribute="bottom" constant="40" id="4QK-oB-Ihl"/>
                             <constraint firstItem="rO6-Zu-BXx" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="64Y-LJ-b4o"/>
                             <constraint firstItem="hOE-qx-KMS" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.948837" id="APy-eo-E9C"/>
                             <constraint firstItem="hOE-qx-KMS" firstAttribute="top" secondItem="rO6-Zu-BXx" secondAttribute="bottom" constant="40" id="Mkj-xI-HEN"/>
                             <constraint firstItem="rO6-Zu-BXx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NdZ-P0-rah"/>
+                            <constraint firstItem="SUa-N8-L6F" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XIh-g2-5sJ"/>
                             <constraint firstItem="rO6-Zu-BXx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="dqj-X2-B1Q"/>
                         </constraints>
                     </view>
@@ -71,6 +90,7 @@
                         <outlet property="btnResetAnimation" destination="j3v-Q8-pQl" id="v81-vu-gWf"/>
                         <outlet property="btnToggleAnimation" destination="gcj-0k-ILB" id="QFZ-p0-Z43"/>
                         <outlet property="imgGoodnight" destination="rO6-Zu-BXx" id="kQ9-oa-tLN"/>
+                        <outlet property="swToggleSound" destination="cBm-J9-mlg" id="wpK-gG-pPu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

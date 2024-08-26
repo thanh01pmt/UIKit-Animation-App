@@ -13,14 +13,17 @@ class ViewController: UIViewController {
     // MARK: - Properties
     var imgIndex: Int = 1
     var timer: Timer!
-    var isAnimating = false
-    
+    var isAnimating: Bool = false
+    var audioPlayer: AVAudioPlayer!
+    var isSoundOn: Bool = false
     
     // MARK: - Outlets
     @IBOutlet weak var imgGoodnight: UIImageView!
     @IBOutlet weak var btnToggleAnimation: UIButton!
     @IBOutlet weak var btnResetAnimation: UIButton!
+    @IBOutlet weak var swToggleSound: UISwitch!
     
+    // MARK: - Actions
     @IBAction func changeToNextImage(_ sender: UIButton) {
         if (imgIndex >= 37) {
             imgIndex = 1
@@ -30,7 +33,6 @@ class ViewController: UIViewController {
         updateImage()
     }
     
-    // MARK: - Actions
     @IBAction func toggleAnimating(_ sender: UIButton) {
         if (isAnimating) {
             isAnimating = false
@@ -52,6 +54,19 @@ class ViewController: UIViewController {
         imgIndex = 1
         updateImage()
         toggleAnimating(btnToggleAnimation)
+        isSoundOn = true
+        swToggleSound.isOn = isSoundOn
+        prepareAudioPlayer()
+    }
+    
+    @IBAction func toggleSound(_ sender: Any) {
+        if (isSoundOn) {
+            isSoundOn = false
+            audioPlayer.stop()
+        } else {
+            isSoundOn = true
+            audioPlayer.play()
+        }
     }
     
     // MARK: - Helper Methods
@@ -70,10 +85,31 @@ class ViewController: UIViewController {
     
     func startAnimation() {
         startTimer()
+        if (isSoundOn) {
+            audioPlayer.play()
+        }
+        updateImage()
     }
     
     func pauseAnimation() {
         stopTimer()
+        audioPlayer.stop()
+    }
+    
+    func prepareAudioPlayer() {
+        guard let url = Bundle.main.url(forResource: "goodnight-sound", withExtension: "mp3") 
+        else {
+            print("Music file is not found!")
+            return
+        }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer.numberOfLoops = -1
+            audioPlayer.prepareToPlay()
+        } catch {
+            print("Error initializing AVAudioPlayer: \(error.localizedDescription)")
+        }
     }
     
     // MARK: - Lifecycle Methods
@@ -82,7 +118,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         imgIndex = 1
+        isSoundOn = true
+        swToggleSound.isOn = isSoundOn
         updateImage()
+        prepareAudioPlayer()
     }
 
 }

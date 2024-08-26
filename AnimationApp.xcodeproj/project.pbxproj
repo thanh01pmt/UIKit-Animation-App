@@ -13,6 +13,7 @@
 		7423F8302C7B0E2600EA42A1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7423F82F2C7B0E2600EA42A1 /* Base */; };
 		7423F8322C7B0E2700EA42A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7423F8312C7B0E2700EA42A1 /* Assets.xcassets */; };
 		7423F8352C7B0E2700EA42A1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7423F8342C7B0E2700EA42A1 /* Base */; };
+		7423F83D2C7C0B8C00EA42A1 /* goodnight-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7423F83C2C7C0B8C00EA42A1 /* goodnight-sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7423F8312C7B0E2700EA42A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7423F8342C7B0E2700EA42A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7423F8362C7B0E2700EA42A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7423F83C2C7C0B8C00EA42A1 /* goodnight-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "goodnight-sound.mp3"; path = "../../../../MEGA/Swift_UIKit_Projects/SimpleAnimation/goodnight-sound.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				7423F82C2C7B0E2600EA42A1 /* ViewController.swift */,
 				7423F82E2C7B0E2600EA42A1 /* Main.storyboard */,
 				7423F8312C7B0E2700EA42A1 /* Assets.xcassets */,
+				7423F83C2C7C0B8C00EA42A1 /* goodnight-sound.mp3 */,
 				7423F8332C7B0E2700EA42A1 /* LaunchScreen.storyboard */,
 				7423F8362C7B0E2700EA42A1 /* Info.plist */,
 			);
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7423F83D2C7C0B8C00EA42A1 /* goodnight-sound.mp3 in Resources */,
 				7423F8322C7B0E2700EA42A1 /* Assets.xcassets in Resources */,
 				7423F8352C7B0E2700EA42A1 /* Base in Resources */,
 				7423F8302C7B0E2600EA42A1 /* Base in Resources */,
