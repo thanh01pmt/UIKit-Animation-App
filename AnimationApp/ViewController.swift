@@ -6,21 +6,20 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
+    // MARK: - Properties
     var imgIndex: Int = 1
     var timer: Timer!
     var isAnimating = false
     
+    
+    // MARK: - Outlets
     @IBOutlet weak var imgGoodnight: UIImageView!
     @IBOutlet weak var btnToggleAnimation: UIButton!
     @IBOutlet weak var btnResetAnimation: UIButton!
-    
-    func updateImage() {
-        print("goodnight-images/goodnight\(imgIndex)")
-        imgGoodnight.image = UIImage(named: "goodnight-images/goodnight\(imgIndex)")
-    }
     
     @IBAction func changeToNextImage(_ sender: UIButton) {
         if (imgIndex >= 37) {
@@ -31,6 +30,7 @@ class ViewController: UIViewController {
         updateImage()
     }
     
+    // MARK: - Actions
     @IBAction func toggleAnimating(_ sender: UIButton) {
         if (isAnimating) {
             isAnimating = false
@@ -45,6 +45,19 @@ class ViewController: UIViewController {
             startAnimation()
             btnResetAnimation.isHidden = false
         }
+    }
+    
+    @IBAction func resetAnimation() {
+        pauseAnimation()
+        imgIndex = 1
+        updateImage()
+        toggleAnimating(btnToggleAnimation)
+    }
+    
+    // MARK: - Helper Methods
+    func updateImage() {
+        print("goodnight-images/goodnight\(imgIndex)")
+        imgGoodnight.image = UIImage(named: "goodnight-images/goodnight\(imgIndex)")
     }
     
     func startTimer() {
@@ -63,13 +76,7 @@ class ViewController: UIViewController {
         stopTimer()
     }
     
-    @IBAction func resetAnimation() {
-        pauseAnimation()
-        imgIndex = 1
-        updateImage()
-        toggleAnimating(btnToggleAnimation)
-    }
-        
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -79,4 +86,3 @@ class ViewController: UIViewController {
     }
 
 }
-
