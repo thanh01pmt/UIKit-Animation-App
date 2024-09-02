@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class AnimationVC: UIViewController {
     
     // MARK: - Properties
     var imgIndex: Int = 1
