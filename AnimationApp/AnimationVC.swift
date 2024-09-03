@@ -3,7 +3,7 @@
 //  AnimationApp
 //
 //  Created by Tony Pham on 25/8/24.
-//
+//  sound from: uppbeat.io
 
 import UIKit
 import AVFoundation
@@ -16,12 +16,14 @@ class AnimationVC: UIViewController {
     var isAnimating: Bool = false
     var audioPlayer: AVAudioPlayer!
     var isSoundOn: Bool = false
+    var soundName: String = "goodnight-sound"
     
     // MARK: - Outlets
     @IBOutlet weak var imgGoodnight: UIImageView!
     @IBOutlet weak var btnToggleAnimation: UIButton!
     @IBOutlet weak var btnResetAnimation: UIButton!
     @IBOutlet weak var swToggleSound: UISwitch!
+    @IBOutlet weak var lblSoundName: UILabel!
     
     // MARK: - Actions
     @IBAction func changeToNextImage(_ sender: UIButton) {
@@ -33,7 +35,7 @@ class AnimationVC: UIViewController {
         updateImage()
     }
     
-    @IBAction func toggleAnimating(_ sender: UIButton) {
+    @IBAction func toggleAnimation(_ sender: UIButton) {
         if (isAnimating) {
             isAnimating = false
             btnToggleAnimation.tintColor = .systemBlue
@@ -50,16 +52,18 @@ class AnimationVC: UIViewController {
     }
     
     @IBAction func resetAnimation() {
+        lblSoundName.text = soundName
         pauseAnimation()
         imgIndex = 1
         updateImage()
-        toggleAnimating(btnToggleAnimation)
+        isAnimating = true
+        toggleAnimation(btnToggleAnimation)
         isSoundOn = true
         swToggleSound.isOn = isSoundOn
         prepareAudioPlayer()
     }
     
-    @IBAction func toggleSound(_ sender: Any) {
+    @IBAction func toggleSound(_ sender: UISwitch) {
         if (isSoundOn) {
             isSoundOn = false
             audioPlayer.stop()
@@ -67,6 +71,7 @@ class AnimationVC: UIViewController {
             isSoundOn = true
             audioPlayer.play()
         }
+        swToggleSound.isOn = isSoundOn
     }
     
     // MARK: - Helper Methods
@@ -80,24 +85,26 @@ class AnimationVC: UIViewController {
     }
     
     func stopTimer() {
-        timer.invalidate()
+        if (timer != nil) {
+            timer.invalidate()
+        }
     }
     
     func startAnimation() {
         startTimer()
         if (isSoundOn) {
-            audioPlayer.play()
+            audioPlayer?.play()
         }
         updateImage()
     }
     
     func pauseAnimation() {
         stopTimer()
-        audioPlayer.stop()
+        audioPlayer?.stop()
     }
     
     func prepareAudioPlayer() {
-        guard let url = Bundle.main.url(forResource: "goodnight-sound", withExtension: "mp3") 
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3")
         else {
             print("Music file is not found!")
             return
@@ -107,10 +114,42 @@ class AnimationVC: UIViewController {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer.numberOfLoops = -1
             audioPlayer.prepareToPlay()
+            print("\(soundName) will be played!")
         } catch {
             print("Error initializing AVAudioPlayer: \(error.localizedDescription)")
         }
     }
+    
+    // MARK: - Unwind Segue
+    
+    // 1st method
+    @IBAction func unwindToAnimation(segue: UIStoryboardSegue) {
+        if let sourceVC = segue.source as? SoundSelectionVC {
+            if let selectedSound = sourceVC.selectedSound {
+                print("Unwind #1 Segue is activated!")
+                soundName = selectedSound
+                lblSoundName.text = soundName
+                prepareAudioPlayer()
+                if swToggleSound.isOn {
+                    audioPlayer.play()
+                }
+            }
+        }
+    }
+    
+    // 2nd method
+    //    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
+    //        if let sourceVC = fromViewController as? SoundSelectionVC {
+    //            if let selectedSound = sourceVC.selectedSound {
+    //                print("Unwind #2 Segue is activated!")
+    //                soundName = selectedSound
+    //                lblSoundName.text = soundName
+    //                prepareAudioPlayer()
+    //            }
+    //            return true
+    //        }
+    //        return false
+    //    }
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -119,9 +158,11 @@ class AnimationVC: UIViewController {
         
         imgIndex = 1
         isSoundOn = true
-        swToggleSound.isOn = isSoundOn
+        swToggleSound?.isOn = isSoundOn
         updateImage()
+        lblSoundName.text = soundName
         prepareAudioPlayer()
     }
-
 }
+
+// https://stackoverflow.com/questions/35313747/passing-data-with-unwind-segue
