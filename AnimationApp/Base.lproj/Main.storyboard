@@ -162,8 +162,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="6ta-f7-Tv0" id="Srz-Uw-rfi"/>
-                                    <outlet property="delegate" destination="6ta-f7-Tv0" id="9SN-y6-6Rq"/>
+                                    <outlet property="dataSource" destination="6ta-f7-Tv0" id="6cx-5j-WG6"/>
+                                    <outlet property="delegate" destination="6ta-f7-Tv0" id="MBe-NQ-Y1k"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsU-6F-f9k" userLabel="btnSelectSound">
@@ -174,7 +174,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Select This Sound"/>
                                 <connections>
-                                    <action selector="selectCurrentSound:" destination="6ta-f7-Tv0" eventType="touchUpInside" id="3F1-fn-VnO"/>
                                     <segue destination="axx-aI-dMS" kind="unwind" identifier="unwindToAnimation" unwindAction="unwindToAnimationWithSegue:" id="frH-dD-hEO"/>
                                 </connections>
                             </button>
@@ -192,6 +191,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PW2-MV-1SG"/>
+                    <connections>
+                        <outlet property="tableSound" destination="pkC-BK-deu" id="QKQ-sb-edV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTN-cG-zRb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="axx-aI-dMS" userLabel="Exit" sceneMemberID="exit"/>

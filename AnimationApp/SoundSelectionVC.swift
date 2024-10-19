@@ -8,10 +8,8 @@
 import UIKit
 
 class SoundSelectionVC: UIViewController {
-    
-    @IBAction func selectCurrentSound(_ sender: Any) {
-        //sendData()
-    }
+        
+    @IBOutlet weak var tableSound: UITableView!
     
     var soundNames: [String] = [
         "catch-my-breath-ambient-boy", "goodnight-moon-sensho",
@@ -28,15 +26,9 @@ class SoundSelectionVC: UIViewController {
     ]
     
     var selectedSound: String? = nil
-    
-    func sendData() {
-        performSegue(withIdentifier: "unwindToAnimation", sender: self)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
     }
 }
 
@@ -47,14 +39,19 @@ extension SoundSelectionVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = soundNames[indexPath.row]
-        // cell.detailTextLabel?.text = "This is the detail of \(soundNames[indexPath.row])"
+        
+        // cell.textLabel?.text = soundNames[indexPath.row]  // deprecated
+        var content = cell.defaultContentConfiguration()
+        content.text = soundNames[indexPath.row]
+        content.secondaryText = "Sound track"
+        
+        cell.contentConfiguration = content
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSound = soundNames[indexPath.row]
         print("You selected \(selectedSound ?? "nothing!")")
-        // sendData()
     }
 }
