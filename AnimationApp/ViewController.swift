@@ -61,6 +61,10 @@ class ViewController: UIViewController {
         imgGoodnight.image = UIImage(named: "goodnight-images/goodnight\(imgIndex)")
     }
     
+//    func startTimer() {
+//        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.changeToNextImage(_:)), userInfo: nil, repeats: true)
+//    }
+    
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
             self.changeToNextImage(self.btnNextImage)
