@@ -29,11 +29,10 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Animate"/>
                                         <connections>
-                                            <action selector="changeToNextImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vwX-iG-e7n"/>
                                             <action selector="toggleAnimating:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ITu-pw-LqY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKz-ae-e5p" userLabel="btnClick">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKz-ae-e5p" userLabel="btnNextImage">
                                         <rect key="frame" x="214" y="0.0" width="194" height="38"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Next Image"/>
@@ -68,6 +67,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnNextImage" destination="HKz-ae-e5p" id="xdi-QP-k8D"/>
                         <outlet property="btnResetAnimation" destination="j3v-Q8-pQl" id="v81-vu-gWf"/>
                         <outlet property="btnToggleAnimation" destination="gcj-0k-ILB" id="QFZ-p0-Z43"/>
                         <outlet property="imgGoodnight" destination="rO6-Zu-BXx" id="kQ9-oa-tLN"/>

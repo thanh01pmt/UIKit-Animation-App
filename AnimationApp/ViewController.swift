@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imgGoodnight: UIImageView!
     @IBOutlet weak var btnToggleAnimation: UIButton!
     @IBOutlet weak var btnResetAnimation: UIButton!
+    @IBOutlet weak var btnNextImage: UIButton!
     
     @IBAction func changeToNextImage(_ sender: UIButton) {
         if (imgIndex >= 37) {
@@ -61,7 +62,9 @@ class ViewController: UIViewController {
     }
     
     func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.changeToNextImage(_:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
+            self.changeToNextImage(self.btnNextImage)
+        }
     }
     
     func stopTimer() {
