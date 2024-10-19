@@ -122,34 +122,10 @@ class AnimationVC: UIViewController {
     
     // MARK: - Unwind Segue
     
-    // 1st method
-    @IBAction func unwindToAnimation(segue: UIStoryboardSegue) {
-        if let sourceVC = segue.source as? SoundSelectionVC {
-            if let selectedSound = sourceVC.selectedSound {
-                print("Unwind #1 Segue is activated!")
-                soundName = selectedSound
-                lblSoundName.text = soundName
-                prepareAudioPlayer()
-                if swToggleSound.isOn {
-                    audioPlayer.play()
-                }
-            }
-        }
-    }
+    // Challenge 1: Hiệu chỉnh để khi người dùng click vào nút "Select This Sound" thì sẽ được quay về (unwind back) AnimationVC.
+    // Challenge 4: Xử lý thông tin trong IBAction unwind... tương ứng để có thể đọc được giá trị của biến selectedSound trong SoundSelectionVC và hiển thị ra màn hình giá trị tương ứng.
+    // Challenge 5: Cập nhật và play file âm thanh tương ứng.
     
-    // 2nd method
-    //    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, withSender sender: Any) -> Bool {
-    //        if let sourceVC = fromViewController as? SoundSelectionVC {
-    //            if let selectedSound = sourceVC.selectedSound {
-    //                print("Unwind #2 Segue is activated!")
-    //                soundName = selectedSound
-    //                lblSoundName.text = soundName
-    //                prepareAudioPlayer()
-    //            }
-    //            return true
-    //        }
-    //        return false
-    //    }
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -165,4 +141,4 @@ class AnimationVC: UIViewController {
     }
 }
 
-// https://stackoverflow.com/questions/35313747/passing-data-with-unwind-segue
+
